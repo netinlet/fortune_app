@@ -24,9 +24,7 @@ describe FortunesController do
       specify{ response.status.should eq(200) }
       specify{ assigns(:fortune).should eq(@fortune) }
       specify{ response.content_type.should eq("text/html") }
-      specify{ expect(response.body).to eq("Rand Fortune") }
-
-
+      specify{ response.should render_template(:index) }
     end
   end
 

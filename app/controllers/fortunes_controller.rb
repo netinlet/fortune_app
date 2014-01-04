@@ -5,7 +5,7 @@ class FortunesController < ApplicationController
 
     respond_to do |format|
       format.json{ render :json => @fortune.to_json(:except => "_id") }
-      format.html{ render :text => @fortune.message }
+      format.html
     end
   end
 end

@@ -10,12 +10,10 @@ development:
       # of host:port pairs. (required)
       hosts:
         - localhost:27017
-        - localhost:27018
-        - localhost:27019
       options:
         # Change whether the session persists in safe mode by default.
         # (default: false)
-        safe: true
+        # safe: false
 
         # Change the default consistency model to :eventual or :strong.
         # :eventual will send reads to secondaries, :strong sends everything

@@ -2,6 +2,10 @@ class FortunesController < ApplicationController
 
   def index
     @fortune = Fortune.random
-    render :text => @fortune.message
+
+    respond_to do |format|
+      format.json{ render :json => @fortune.to_json(:except => "_id") }
+      format.html{ render :text => @fortune.message }
+    end
   end
 end

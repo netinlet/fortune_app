@@ -1,7 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+dat_files = Dir.glob(Rails.root + "db/data/fortune-mod-9708/datfiles/*")
+dat_data = dat_files.map do |df|
+  if File.file?(df)
+    File.read(df).split(/^%$/).map{|data| {:category => File.basename(df), :message => data.strip}}.reject{|data| 0 == data[:message].length}
+  end
+end.flatten.reject{|df| df.nil?}
+
+Fortune.collection.insert(dat_data)
+
+

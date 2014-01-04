@@ -60,7 +60,7 @@ module FortuneApp
     # config.active_record.whitelist_attributes = true
 
     config.generators do |g|
-      g.orm :mongoid
+      g.orm            :active_record
       g.test_framework :rspec, fixture: false
     end
 

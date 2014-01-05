@@ -4,7 +4,7 @@ dat_data = dat_files.map do |df|
     File.read(df).split(/^%$/).map{|data| {:category => File.basename(df), :message => data.strip}}.reject{|data| 0 == data[:message].length}
   end
 end.flatten.reject{|df| df.nil?}
-
+Fortune.delete_all
 Fortune.collection.insert(dat_data)
 
 
